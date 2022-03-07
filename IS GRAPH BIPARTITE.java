@@ -8,11 +8,11 @@ class Solution {
     }
 
     boolean validColor(int[][] g, int[] colors, int color, int node) {
-        if (colors[node] != 0)
-            return colors[node] == color;
-        colors[node] = color;
-        for (int adjacent : g[node])
-            if (!validColor(g, colors, -color, adjacent))
+        if (colors[node] != 0) //already visited
+            return colors[node] == color; //checking with the matched color
+        colors[node] = color; else colouring with the fav color
+        for (int adjacent : g[node]) //coloring the adjacent nodes
+            if (!validColor(g, colors, -color, adjacent)) // coloring with the opposite color 
                 return false;
         return true;
     }
